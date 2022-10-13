@@ -5,16 +5,14 @@ const KEY = 'hello';
 
 @Injectable()
 export class AppService {
-  constructor(
-    @Inject(CACHE_MANAGER) private readonly cache: Cache
-  ) {}
+	constructor(@Inject(CACHE_MANAGER) private readonly cache: Cache) {}
+	
+	async getHello(): Promise<string> {
+    	const name = await this.cache.get(KEY) || 'undefined';
+    	return `Hello ${name}!`;
+  	}
 
-  async getHello(): Promise<string> {
-    const name = await this.cache.get(KEY) || 'undefined';
-    return `Hello ${name}!`;
-  }
-
-  async setHello(name: string): Promise<void> {
-    await this.cache.set(KEY, name, {ttl: 3600});
-  }
+  	async setHello(name: string): Promise<void> {
+    	await this.cache.set(KEY, name, { ttl: 3600 });
+  	}
 }
