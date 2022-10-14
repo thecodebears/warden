@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
+import { Injectable, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CacheModule } from './cache.module';
-import { RedisModule } from '@liaoliaots/nestjs-redis';
+import { RedisModule, RedisService } from '@liaoliaots/nestjs-redis';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { NodesResolver } from './node/node.resolver';
@@ -27,4 +27,6 @@ import { NodesResolver } from './node/node.resolver';
   	providers: [AppService, NodesResolver]
 })
 
-export class AppModule {}
+export class AppModule {
+
+}

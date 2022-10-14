@@ -30,7 +30,7 @@ class WardenNode {
     host: string;
 
     @Field(type => [String])
-    permissions: string[];
+    permissions?: string[];
 
     @Field(type => String)
     requestSecret: string;
@@ -38,8 +38,8 @@ class WardenNode {
     @Field(type => String)
     tokenSecret: string;
 
-    @Field(type => WardenComponent)
-    components: WardenComponent[];
+    @Field(type => [WardenComponent], { nullable: true })
+    components?: WardenComponent[];
 }
 
 
